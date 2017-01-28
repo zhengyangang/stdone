@@ -7,3 +7,11 @@ eureka:
       registerWithEureka: true
       fetchRegistry: true
       defaultZone: http://localhost:9911/eureka/
+      
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/db_user
+    username: user_service
+    password: Us135792468
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa.properties.hibernate.hbm2ddl.auto: update
