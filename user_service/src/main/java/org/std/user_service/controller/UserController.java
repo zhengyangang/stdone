@@ -1,9 +1,11 @@
 package org.std.user_service.controller;
 
 import java.util.Date;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,9 +37,10 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/list", method=RequestMethod.GET)
-	public List<User> list() {
+	public Page<User> list(@RequestParam(required = false) Integer page,@RequestParam(required = false) Integer size) {
 		System.out.println("UserController list");
-		List<User> users = userRepository.findAll();
+		Pageable pageable = new PageRequest(page,size);
+		Page<User> users = userRepository.findAll(pageable);
 		return users;
 	}
 }

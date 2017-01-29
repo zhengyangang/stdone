@@ -5,348 +5,377 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
+
+/**
+ * The persistent class for the t_uc_user database table.
+ * 
+ */
 @Entity
 @Table(name="t_uc_user")
-public class User {
+@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
+public class User  {
 	@Id
-	@GeneratedValue
-    private Integer userId;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="user_id")
+	private int userId;
 
-	@Column(nullable = false)
-    private String userName;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="active_time")
+	private Date activeTime;
 
-	@Column(nullable = false)
-    private String pwd;
+	private String avatar;
 
-	@Column(nullable = false)
-    private String salt;
+	private int calendar;
 
-	@Column(nullable = false)
-    private Integer status;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="cancel_time")
+	private Date cancelTime;
 
-	@Column(nullable = false)
-    private String channelMember;
+	@Column(name="card_cat")
+	private int cardCat;
 
-	@Column(nullable = false)
-    private Date registerTime;
+	@Column(name="card_no")
+	private String cardNo;
 
-	@Column(nullable = false)
-    private Integer registerIp;
+	@Column(name="channel_member")
+	private String channelMember;
 
-    private String countryCode;
+	private String country;
 
-    private String mobile;
+	@Column(name="country_code")
+	private String countryCode;
 
-    private String email;
+	private String county;
 
-    private String trueName;
+	private int day;
 
-    private Integer cardCat;
+	private String email;
 
-    private String cardNo;
+	private int gender;
 
-    private String openOrg;
+	private int height;
 
-    private String openId;
+	@Column(name="lastlogin_ip")
+	private int lastloginIp;
 
-    private Integer gender;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="lastlogin_time")
+	private Date lastloginTime;
 
-    private Integer calendar;
+	@Column(name="lastupdate_ip")
+	private int lastupdateIp;
 
-    private Integer year;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="lastupdate_time")
+	private Date lastupdateTime;
 
-    private Integer month;
+	private String mobile;
 
-    private Integer day;
+	private int month;
 
-    private Integer height;
+	@Column(name="open_id")
+	private String openId;
 
-    private Integer weight;
+	@Column(name="open_org")
+	private String openOrg;
 
-    private String avatar;
+	private String pwd;
 
-    private String country;
+	@Column(name="register_ip")
+	private int registerIp;
 
-    private String state;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="register_time")
+	private Date registerTime;
 
-    private String county;
+	private String salt;
 
-    private Date activeTime;
+	private String state;
 
-    private Date cancelTime;
+	private int status;
 
-    private Date lastloginTime;
+	@Column(name="true_name")
+	private String trueName;
 
-    private Integer lastloginIp;
+	@Column(name="user_name")
+	private String userName;
 
-    private Date lastupdateTime;
+	private int weight;
 
-    private Integer lastupdateIp;
+	private int year;
 
-    public Integer getUserId() {
-        return userId;
-    }
+	public User() {
+	}
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
+	public int getUserId() {
+		return this.userId;
+	}
 
-    public String getUserName() {
-        return userName;
-    }
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
 
-    public void setUserName(String userName) {
-        this.userName = userName == null ? null : userName.trim();
-    }
+	public Date getActiveTime() {
+		return this.activeTime;
+	}
+
+	public void setActiveTime(Date activeTime) {
+		this.activeTime = activeTime;
+	}
+
+	public String getAvatar() {
+		return this.avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
+
+	public int getCalendar() {
+		return this.calendar;
+	}
+
+	public void setCalendar(int calendar) {
+		this.calendar = calendar;
+	}
+
+	public Date getCancelTime() {
+		return this.cancelTime;
+	}
+
+	public void setCancelTime(Date cancelTime) {
+		this.cancelTime = cancelTime;
+	}
+
+	public int getCardCat() {
+		return this.cardCat;
+	}
+
+	public void setCardCat(int cardCat) {
+		this.cardCat = cardCat;
+	}
+
+	public String getCardNo() {
+		return this.cardNo;
+	}
+
+	public void setCardNo(String cardNo) {
+		this.cardNo = cardNo;
+	}
+
+	public String getChannelMember() {
+		return this.channelMember;
+	}
+
+	public void setChannelMember(String channelMember) {
+		this.channelMember = channelMember;
+	}
+
+	public String getCountry() {
+		return this.country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public String getCountryCode() {
+		return this.countryCode;
+	}
+
+	public void setCountryCode(String countryCode) {
+		this.countryCode = countryCode;
+	}
+
+	public String getCounty() {
+		return this.county;
+	}
+
+	public void setCounty(String county) {
+		this.county = county;
+	}
+
+	public int getDay() {
+		return this.day;
+	}
+
+	public void setDay(int day) {
+		this.day = day;
+	}
+
+	public String getEmail() {
+		return this.email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public int getGender() {
+		return this.gender;
+	}
+
+	public void setGender(int gender) {
+		this.gender = gender;
+	}
+
+	public int getHeight() {
+		return this.height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
+	public int getLastloginIp() {
+		return this.lastloginIp;
+	}
+
+	public void setLastloginIp(int lastloginIp) {
+		this.lastloginIp = lastloginIp;
+	}
+
+	public Date getLastloginTime() {
+		return this.lastloginTime;
+	}
+
+	public void setLastloginTime(Date lastloginTime) {
+		this.lastloginTime = lastloginTime;
+	}
+
+	public int getLastupdateIp() {
+		return this.lastupdateIp;
+	}
+
+	public void setLastupdateIp(int lastupdateIp) {
+		this.lastupdateIp = lastupdateIp;
+	}
+
+	public Date getLastupdateTime() {
+		return this.lastupdateTime;
+	}
+
+	public void setLastupdateTime(Date lastupdateTime) {
+		this.lastupdateTime = lastupdateTime;
+	}
+
+	public String getMobile() {
+		return this.mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public int getMonth() {
+		return this.month;
+	}
+
+	public void setMonth(int month) {
+		this.month = month;
+	}
 
-    public String getPwd() {
-        return pwd;
-    }
+	public String getOpenId() {
+		return this.openId;
+	}
 
-    public void setPwd(String pwd) {
-        this.pwd = pwd == null ? null : pwd.trim();
-    }
+	public void setOpenId(String openId) {
+		this.openId = openId;
+	}
 
-    public String getSalt() {
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt == null ? null : salt.trim();
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public String getChannelMember() {
-        return channelMember;
-    }
-
-    public void setChannelMember(String channelMember) {
-        this.channelMember = channelMember == null ? null : channelMember.trim();
-    }
-
-    public Date getRegisterTime() {
-        return registerTime;
-    }
-
-    public void setRegisterTime(Date registerTime) {
-        this.registerTime = registerTime;
-    }
-
-    public Integer getRegisterIp() {
-        return registerIp;
-    }
-
-    public void setRegisterIp(Integer registerIp) {
-        this.registerIp = registerIp;
-    }
-
-    public String getCountryCode() {
-        return countryCode;
-    }
-
-    public void setCountryCode(String countryCode) {
-        this.countryCode = countryCode == null ? null : countryCode.trim();
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile == null ? null : mobile.trim();
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
-    }
-
-    public String getTrueName() {
-        return trueName;
-    }
-
-    public void setTrueName(String trueName) {
-        this.trueName = trueName == null ? null : trueName.trim();
-    }
-
-    public Integer getCardCat() {
-        return cardCat;
-    }
-
-    public void setCardCat(Integer cardCat) {
-        this.cardCat = cardCat;
-    }
-
-    public String getCardNo() {
-        return cardNo;
-    }
-
-    public void setCardNo(String cardNo) {
-        this.cardNo = cardNo == null ? null : cardNo.trim();
-    }
-
-    public String getOpenOrg() {
-        return openOrg;
-    }
-
-    public void setOpenOrg(String openOrg) {
-        this.openOrg = openOrg == null ? null : openOrg.trim();
-    }
-
-    public String getOpenId() {
-        return openId;
-    }
-
-    public void setOpenId(String openId) {
-        this.openId = openId == null ? null : openId.trim();
-    }
-
-    public Integer getGender() {
-        return gender;
-    }
-
-    public void setGender(Integer gender) {
-        this.gender = gender;
-    }
-
-    public Integer getCalendar() {
-        return calendar;
-    }
-
-    public void setCalendar(Integer calendar) {
-        this.calendar = calendar;
-    }
-
-    public Integer getYear() {
-        return year;
-    }
-
-    public void setYear(Integer year) {
-        this.year = year;
-    }
-
-    public Integer getMonth() {
-        return month;
-    }
-
-    public void setMonth(Integer month) {
-        this.month = month;
-    }
-
-    public Integer getDay() {
-        return day;
-    }
-
-    public void setDay(Integer day) {
-        this.day = day;
-    }
-
-    public Integer getHeight() {
-        return height;
-    }
-
-    public void setHeight(Integer height) {
-        this.height = height;
-    }
-
-    public Integer getWeight() {
-        return weight;
-    }
-
-    public void setWeight(Integer weight) {
-        this.weight = weight;
-    }
-
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar == null ? null : avatar.trim();
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country == null ? null : country.trim();
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state == null ? null : state.trim();
-    }
-
-    public String getCounty() {
-        return county;
-    }
-
-    public void setCounty(String county) {
-        this.county = county == null ? null : county.trim();
-    }
-
-    public Date getActiveTime() {
-        return activeTime;
-    }
-
-    public void setActiveTime(Date activeTime) {
-        this.activeTime = activeTime;
-    }
-
-    public Date getCancelTime() {
-        return cancelTime;
-    }
-
-    public void setCancelTime(Date cancelTime) {
-        this.cancelTime = cancelTime;
-    }
-
-    public Date getLastloginTime() {
-        return lastloginTime;
-    }
-
-    public void setLastloginTime(Date lastloginTime) {
-        this.lastloginTime = lastloginTime;
-    }
-
-    public Integer getLastloginIp() {
-        return lastloginIp;
-    }
-
-    public void setLastloginIp(Integer lastloginIp) {
-        this.lastloginIp = lastloginIp;
-    }
-
-    public Date getLastupdateTime() {
-        return lastupdateTime;
-    }
-
-    public void setLastupdateTime(Date lastupdateTime) {
-        this.lastupdateTime = lastupdateTime;
-    }
-
-    public Integer getLastupdateIp() {
-        return lastupdateIp;
-    }
-
-    public void setLastupdateIp(Integer lastupdateIp) {
-        this.lastupdateIp = lastupdateIp;
-    }
+	public String getOpenOrg() {
+		return this.openOrg;
+	}
+
+	public void setOpenOrg(String openOrg) {
+		this.openOrg = openOrg;
+	}
+
+	public String getPwd() {
+		return this.pwd;
+	}
+
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
+
+	public int getRegisterIp() {
+		return this.registerIp;
+	}
+
+	public void setRegisterIp(int registerIp) {
+		this.registerIp = registerIp;
+	}
+
+	public Date getRegisterTime() {
+		return this.registerTime;
+	}
+
+	public void setRegisterTime(Date registerTime) {
+		this.registerTime = registerTime;
+	}
+
+	public String getSalt() {
+		return this.salt;
+	}
+
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
+
+	public String getState() {
+		return this.state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public int getStatus() {
+		return this.status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	public String getTrueName() {
+		return this.trueName;
+	}
+
+	public void setTrueName(String trueName) {
+		this.trueName = trueName;
+	}
+
+	public String getUserName() {
+		return this.userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public int getWeight() {
+		return this.weight;
+	}
+
+	public void setWeight(int weight) {
+		this.weight = weight;
+	}
+
+	public int getYear() {
+		return this.year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
+	}
+
 }
