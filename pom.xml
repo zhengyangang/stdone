@@ -101,5 +101,7 @@
 	<modules>
 		<module>discovery_service</module>
 		<module>user_service</module>
+		<module>stdweb</module>
+		<module>stdspider</module>
 	</modules>
 </project>
