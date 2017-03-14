@@ -5,20 +5,21 @@ import javax.persistence.*;
 
 
 /**
- * The persistent class for the t_cat_continent database table.
+ * The persistent class for the t_cat_area database table.
  * 
  */
 @Entity
-@Table(name="t_cat_continent")
-@NamedQuery(name="Continent.findAll", query="SELECT c FROM Continent c")
-public class Continent implements Serializable {
+@Table(name="t_cat_area")
+@NamedQuery(name="Area.findAll", query="SELECT a FROM Area a")
+public class Area implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(name="AREA_ID")
+	private int areaId;
+
 	@Column(name="CONTINENT_ID")
 	private int continentId;
-
-	private int acreage;
 
 	@Column(name="`DESC`")
 	private String desc;
@@ -30,12 +31,15 @@ public class Continent implements Serializable {
 
 	private String name;
 
-	@Column(name="NAME_FULL")
-	private String nameFull;
+	public Area() {
+	}
 
-	private int population;
+	public int getAreaId() {
+		return this.areaId;
+	}
 
-	public Continent() {
+	public void setAreaId(int areaId) {
+		this.areaId = areaId;
 	}
 
 	public int getContinentId() {
@@ -44,14 +48,6 @@ public class Continent implements Serializable {
 
 	public void setContinentId(int continentId) {
 		this.continentId = continentId;
-	}
-
-	public int getAcreage() {
-		return this.acreage;
-	}
-
-	public void setAcreage(int acreage) {
-		this.acreage = acreage;
 	}
 
 	public String getDesc() {
@@ -84,22 +80,6 @@ public class Continent implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getNameFull() {
-		return this.nameFull;
-	}
-
-	public void setNameFull(String nameFull) {
-		this.nameFull = nameFull;
-	}
-
-	public int getPopulation() {
-		return this.population;
-	}
-
-	public void setPopulation(int population) {
-		this.population = population;
 	}
 
 }

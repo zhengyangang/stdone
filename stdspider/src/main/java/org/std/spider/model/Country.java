@@ -23,11 +23,14 @@ public class Country implements Serializable {
 	@Column(name="AIR_CODE")
 	private String airCode;
 
-	@Column(name="CONTINENT_ID")
-	private int continentId;
+	@Column(name="AREA_ID")
+	private int areaId;
 
 	@Column(name="COUNTRY_CODE")
 	private String countryCode;
+
+	@Column(name="COUNTRY_TYPE")
+	private int countryType;
 
 	@Column(name="DOMAIN_CODE")
 	private String domainCode;
@@ -36,6 +39,9 @@ public class Country implements Serializable {
 
 	@Column(name="ENAME_ABBR")
 	private String enameAbbr;
+
+	@Column(name="ENAME_FULL")
+	private String enameFull;
 
 	@Column(name="FIFA_CODE")
 	private String fifaCode;
@@ -47,8 +53,8 @@ public class Country implements Serializable {
 
 	private String name;
 
-	@Column(name="NAME_ABBR")
-	private String nameAbbr;
+	@Column(name="NAME_FULL")
+	private String nameFull;
 
 	@Column(name="NATIONAL_FLAG")
 	private String nationalFlag;
@@ -57,6 +63,9 @@ public class Country implements Serializable {
 	private String olympicCode;
 
 	private int population;
+
+	@Column(name="TELEPHONE_CODE")
+	private int telephoneCode;
 
 	@Column(name="TIME_ZONE")
 	private int timeZone;
@@ -88,12 +97,12 @@ public class Country implements Serializable {
 		this.airCode = airCode;
 	}
 
-	public int getContinentId() {
-		return this.continentId;
+	public int getAreaId() {
+		return this.areaId;
 	}
 
-	public void setContinentId(int continentId) {
-		this.continentId = continentId;
+	public void setAreaId(int areaId) {
+		this.areaId = areaId;
 	}
 
 	public String getCountryCode() {
@@ -102,6 +111,14 @@ public class Country implements Serializable {
 
 	public void setCountryCode(String countryCode) {
 		this.countryCode = countryCode;
+	}
+
+	public int getCountryType() {
+		return this.countryType;
+	}
+
+	public void setCountryType(int countryType) {
+		this.countryType = countryType;
 	}
 
 	public String getDomainCode() {
@@ -126,6 +143,14 @@ public class Country implements Serializable {
 
 	public void setEnameAbbr(String enameAbbr) {
 		this.enameAbbr = enameAbbr;
+	}
+
+	public String getEnameFull() {
+		return this.enameFull;
+	}
+
+	public void setEnameFull(String enameFull) {
+		this.enameFull = enameFull;
 	}
 
 	public String getFifaCode() {
@@ -160,12 +185,12 @@ public class Country implements Serializable {
 		this.name = name;
 	}
 
-	public String getNameAbbr() {
-		return this.nameAbbr;
+	public String getNameFull() {
+		return this.nameFull;
 	}
 
-	public void setNameAbbr(String nameAbbr) {
-		this.nameAbbr = nameAbbr;
+	public void setNameFull(String nameFull) {
+		this.nameFull = nameFull;
 	}
 
 	public String getNationalFlag() {
@@ -190,6 +215,14 @@ public class Country implements Serializable {
 
 	public void setPopulation(int population) {
 		this.population = population;
+	}
+
+	public int getTelephoneCode() {
+		return this.telephoneCode;
+	}
+
+	public void setTelephoneCode(int telephoneCode) {
+		this.telephoneCode = telephoneCode;
 	}
 
 	public int getTimeZone() {

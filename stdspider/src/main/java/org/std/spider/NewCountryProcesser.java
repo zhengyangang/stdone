@@ -13,15 +13,15 @@ import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.selector.Html;
 import us.codecraft.webmagic.selector.Selectable;
 
-public class CountryProcesser implements PageProcessor {
+public class NewCountryProcesser implements PageProcessor {
 
     private Site site = Site.me()
-            .setDomain("mm.httpcn.com")
+            .setDomain("www.ailvxing.com")
             .setSleepTime(100)
             .setUserAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36");
     ;
 
-    public static final String list = "http://mm.httpcn.com/";
+    public static final String list = "http://www.ailvxing.com/";
 
     @Override
     public void process(Page page) {
@@ -29,35 +29,48 @@ public class CountryProcesser implements PageProcessor {
     	Selectable regexSel = pageSel.regex(list);
         if (regexSel.match()) {
         	Html html = page.getHtml();
-        	Selectable selable = html.xpath("//tbody[1]//tr");
+        	Selectable selable = html.xpath("//tbody//tr");
             List<Selectable> list=selable.nodes();
             for (Selectable s : list) {
             	if(s.regex("<tr>").match()){
-	                String ename=s.xpath("//td[1]/text()").toString();
-	                if(TextUtils.isEmpty(ename)) {
+            		Selectable tmpList = s.xpath("//td");
+	                if(tmpList.nodes().size() != 7) {
 	                	continue;
 	                }
 	                String name=s.xpath("//td[2]/text()").toString();
-	                String ename_abbr=s.xpath("//td[3]/text()").toString();
-	                String code=s.xpath("//td[4]/text()").toString();
-	                String tz=s.xpath("//td[5]/text()").toString();
-	                Country country=new Country();
-	                country.setTelephoneCode(Integer.valueOf(code));
-	                country.setName(name);
-	                country.setEname(ename);
-	                country.setDomainCode(ename_abbr);
+	                String ename=s.xpath("//td[3]/text()").toString();
+	                String code2=s.xpath("//td[4]/text()").toString();
+	                String code3=s.xpath("//td[5]/text()").toString();
+	                String id=s.xpath("//td[6]/text()").toString();
 	                try{
-	                	country.setTimeZone(Integer.valueOf(tz)*10+80);
+	                	Integer.valueOf(id);
 	                }catch(Exception e) {
-	                	double ftz = Double.parseDouble(tz);
-	                	if(ftz < 0){
-	                		ftz -= 0.2;
-	                	}else {
-	                		ftz += 0.2;
-	                	}
-	                	country.setTimeZone((int)(ftz*10) +80);
+	                	//System.out.println("exception:" + id);
+	                	continue;
 	                }
-	                page.putField("country"+code, country);
+	                String full=s.xpath("//td[7]/text()").toString();
+	                Country country=new Country();
+	                country.setCountryId(Integer.valueOf(id));
+	                country.setName(name);
+	                String[] ename_arr = ename.split(",");
+	                if(ename_arr.length > 1) {
+	                	ename = ename_arr[1] + " " + ename_arr[0];
+	                	ename = ename.trim();
+	                }
+	                country.setEname(ename);
+	                country.setDomainCode(code2);
+	                country.setCountryCode(code3);
+	                String [] arr = full.split("\\s+");
+	                country.setNameFull(arr[0]);
+	                String ename_full = "";
+	                for(int zzz=1;zzz<arr.length;zzz++){
+	                	ename_full += arr[zzz];
+	                	if(zzz < arr.length -1){
+	                		ename_full += " ";
+	                	}
+	                }
+	                country.setEnameFull(ename_full);
+	                page.putField("country"+id, country);
             	}
             }
         }
@@ -77,9 +90,9 @@ public class CountryProcesser implements PageProcessor {
 //        spider.start();
 //    }
     public static void main1(CountryRepository repo) {
-        Spider spider=Spider.create(new CountryProcesser());
-        spider.addUrl("http://mm.httpcn.com/Mingli/Num/GuojiaCode.html");
-        spider.addPipeline(new CountryPipeline(repo));
+        Spider spider=Spider.create(new NewCountryProcesser());
+        spider.addUrl("http://www.ailvxing.com/info-103-22671-0.html");
+        spider.addPipeline(new NewCountryPipeline(repo));
         spider.thread(5);
         spider.setExitWhenComplete(true);
         spider.start();
