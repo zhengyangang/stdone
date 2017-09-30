@@ -14,6 +14,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncodeing>UTF-8</project.reporting.outputEncodeing>
 		<java.version>1.8</java.version>
 	</properties>
 
@@ -101,7 +102,5 @@
 	<modules>
 		<module>discovery_service</module>
 		<module>user_service</module>
-		<module>stdweb</module>
-		<module>stdspider</module>
 	</modules>
 </project>

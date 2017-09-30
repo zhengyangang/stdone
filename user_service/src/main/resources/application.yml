@@ -6,7 +6,7 @@ eureka:
     serviceUrl:
       registerWithEureka: true
       fetchRegistry: true
-      defaultZone: http://localhost:9911/eureka/
+      defaultZone: http://localhost:9901/eureka/
       
 spring:
   datasource:
