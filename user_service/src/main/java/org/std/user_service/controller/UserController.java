@@ -14,7 +14,7 @@ import org.std.user_service.model.User;
 import org.std.user_service.repository.UserRepository;
 
 @RestController
-@RequestMapping(value = "/user")
+// @RequestMapping(value = "/user")
 public class UserController {
 	
 	@Autowired

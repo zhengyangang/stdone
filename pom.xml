@@ -1,5 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.cloud</groupId>
@@ -64,15 +64,7 @@
 			</snapshots>
 		</repository>
 		<repository>
-			<id>spring-milestones</id>
-			<name>Spring Milestones</name>
-			<url>http://repo.spring.io/libs-milestone-local</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>spring-releases</id>
+			<id>spring-ases</id>
 			<name>Spring Releases</name>
 			<url>http://repo.spring.io/libs-release-local</url>
 			<snapshots>
@@ -102,5 +94,6 @@
 	<modules>
 		<module>discovery_service</module>
 		<module>user_service</module>
-	</modules>
+    <module>api_gateway</module>
+  </modules>
 </project>
